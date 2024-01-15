@@ -1,0 +1,69 @@
+{
+  "build": {
+    "beforeDevCommand": "yarn dev",
+    "beforeBuildCommand": "yarn build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist"
+  },
+  "package": {
+    "productName": "Live2d-Tauri",
+    "version": "0.0.1"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": true,
+      "shell": {
+        "all": false,
+        "open": true
+      },
+      "window": {
+        "setSkipTaskbar": true,
+        "all": true
+      },
+      "protocol": {
+        "all": true,
+        "asset": true,
+        "assetScope": ["**"]
+      },
+      "fs": {
+        "all": true,
+        "scope": ["$RESOURCE/*"]
+      }
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "top.topsea.live2d-tauri",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "resources": [
+        "live2d/*",
+        "data/*"
+      ]
+    },
+    "security": {
+      "csp": "default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content: https://asset.localhost; img-src *; asset: https://asset.localhost; connect-src * blob:;"
+    },
+    "windows": [
+      {
+        "label": "main",
+        "decorations": false,
+        "fullscreen": false,
+        "resizable": true,
+        "title": "live2d-tauri",
+        "width": 800,
+        "height": 600,
+        "transparent": true
+      }
+    ],
+    "systemTray": {
+      "iconPath": "icons/icon.png",
+      "iconAsTemplate": true
+    }
+  }
+}
